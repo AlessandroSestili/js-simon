@@ -5,24 +5,29 @@ alert("Stanno per apparire 5 numeri. Per vincere il gioco devi ricordarli.")
 var numeriDaRicordare = [];
 
 // Faccio ripetere il ciclo finchè l'Array non contiene 5 elementi
-while (numeriDaRicordare.length !== 5) {
+// while (numeriDaRicordare.length !== 5) {
+for (var i = 0; numeriDaRicordare.length !== 5; i++) {
 
     var numeroRandom = generaNumRandom();
 
     if (numeriDaRicordare.includes(numeroRandom) == false) {
-        alert("numero " + numeroRandom);
+        alert(i+1 + "º numero: " + numeroRandom);
         numeriDaRicordare.push(numeroRandom);
     }
+
 }
+
+// }
 
 console.log("Questi sono i numeri scelti dal computer che l'utente deve ricordare: " + numeriDaRicordare);
 
 // Creo il timer dei 30 secondi - parte da 30 e arriva a 0 - a 0 si ferma
 var time = 10
+var boxHtml = document.getElementById("box")
 // il timer che parte da 30
 var timer = setInterval(function () {
 
-    console.log(time--)
+    boxHtml.innerHTML = (time--)
 
     if (time == 0) {
         clearInterval(timer)
@@ -36,12 +41,12 @@ setTimeout(function () {
 
     var arrayNumeriUtente = [];
     var numeriEsatti = [];
-    
+
     while (arrayNumeriUtente.length !== 5) {
-        
+
         var numeroUtente = parseInt(prompt("Inserisci un numero"));
         arrayNumeriUtente.push(numeroUtente);
-        
+
         for (var i = 0; i < numeriDaRicordare.length; i++) {
 
             if (numeriDaRicordare[i] === (numeroUtente)) {
@@ -52,7 +57,7 @@ setTimeout(function () {
 
     console.log(numeriEsatti);
 
-}, 10000);
+}, 11000);
 
 
 
