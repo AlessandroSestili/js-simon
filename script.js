@@ -8,14 +8,14 @@ document.querySelector("h5").innerHTML = ("Allo scadere di questo timer scrivi i
 
 // Faccio ripetere il ciclo finchè l'Array non contiene 5 elementi
 for (var i = 0; numeriDaRicordare.length !== 5; i++) {
-    
+
     var numeroRandom = generaNumRandom(100);
-    
+
     if (numeriDaRicordare.includes(numeroRandom) == false) {
         alert(i + 1 + "º numero: " + numeroRandom);
         numeriDaRicordare.push(numeroRandom);
     }
-    
+
 }
 
 console.log("Questi sono i numeri da ricordare: " + numeriDaRicordare);
@@ -37,7 +37,7 @@ var timer = setInterval(function () {
 
 // Quando si ferma il timer dei 30 secondi parte questa parte di codice
 setTimeout(function () {
-    
+
     var arrayNumeriUtente = [];
     var numeriEsatti = [];
 
@@ -68,24 +68,24 @@ setTimeout(function () {
     console.log("Questi sono i numeri scelti da te: " + arrayNumeriUtente);
 
     // Definisco le condizioni di vittoria o sconfitta
-    if (numeriEsatti.length == 1) {
+    switch (numeriEsatti.length) {
+        case 0:
+            document.querySelector("h5").innerHTML = ("Hai totalizzato " + numeriEsatti.length + " punti. Mi dispiace 😟");
+            break;
 
-        document.querySelector("h5").innerHTML = ("Hai totalizzato " + numeriEsatti.length + " punto. Niente male! 😀");
+        case 1:
+            document.querySelector("h5").innerHTML = ("Hai totalizzato " + numeriEsatti.length + " punto. Niente male! 😀");
+            break;
 
-    } else if (numeriEsatti.length == 0) {
+        case 5:
+            document.querySelector("h5").innerHTML = (numeriEsatti.length + "/5 Complimenti ✅");
+            break;
 
-        document.querySelector("h5").innerHTML = ("Hai totalizzato " + numeriEsatti.length + " punti. Mi dispiace 😟");
-
-    } else if (numeriEsatti.length == 5) {
-
-        document.querySelector("h5").innerHTML = (numeriEsatti.length + "/5 Complimenti ✅");
-
-    } else {
-
-        document.querySelector("h5").innerHTML = ("Hai totalizzato " + numeriEsatti.length + " punti. Bel lavoro 😃");
-
+        default:
+            document.querySelector("h5").innerHTML = ("Hai totalizzato " + numeriEsatti.length + " punti. Bel lavoro 😃");
     }
-}, 31000);
+    
+}, 1000);
 
 
 
