@@ -1,4 +1,3 @@
-//Informo l'utente che deve ricordarsi 5 numeri per vincere il gioco
 alert("Stanno per apparire 5 NUMERI. Per VINCERE il gioco devi RICORDARLI.")
 
 // Creo l' Array dove staranno i numeri generati dal computer, che l'utente dovrà ricordare
@@ -6,11 +5,12 @@ var numeriDaRicordare = [];
 
 document.querySelector("h5").innerHTML = ("Allo scadere di questo timer scrivi i numeri che hai appena visto.");
 
-// Faccio ripetere il ciclo finchè l'Array non contiene 5 elementi
+// Faccio ripetere il ciclo finchè l'Array numeriDaRicordare non contiene 5 elementi
 for (var i = 0; numeriDaRicordare.length !== 5; i++) {
 
     var numeroRandom = generaNumRandom(100);
 
+    // Se il numero NON già è presente nell'Array allora lo pusho 
     if (numeriDaRicordare.includes(numeroRandom) == false) {
         alert(i + 1 + "º numero: " + numeroRandom);
         numeriDaRicordare.push(numeroRandom);
@@ -20,14 +20,17 @@ for (var i = 0; numeriDaRicordare.length !== 5; i++) {
 
 console.log("Questi sono i numeri da ricordare: " + numeriDaRicordare);
 
-// Creo il timer dei 30 secondi - parte da 30 e arriva a 0 - a 0 si ferma
+// Creo un timer che va da 30 a 0
 var time = 30
 var boxHtml = document.getElementById("box")
-// il timer che parte da 30
+
+// Setto un setInterval ogni 1s di Time che decrementa
 var timer = setInterval(function () {
+
 
     boxHtml.innerHTML = (time--);
 
+    // Se la variabile time è = 0 allora fermo il timer
     if (time == 0) {
         clearInterval(timer)
     }
@@ -41,24 +44,29 @@ setTimeout(function () {
     var arrayNumeriUtente = [];
     var numeriEsatti = [];
 
-    // ciclo finchè non ci sono 5 elementi negli array
+    // Chiedo all'Utente di inserire un numero finchè non ce ne sono 5 in arrayNumeriUtente
     while (arrayNumeriUtente.length !== 5) {
 
         var numeroUtente = parseInt(prompt("Inserisci un numero"));
 
+        // Controllo che:
+            // Il numero sia effettivamente un numero
+            // Il numero non sia negativo
+            // Il numero non sia gia stato inserito
         if (Number.isNaN(numeroUtente) || numeroUtente < 0 || arrayNumeriUtente.includes(numeroUtente)) {
 
             alert("Inserisci un numero valido.")
 
         } else {
 
-            // se passa tutti i check pusho i numeri inseriti dall utente in un array
+            // Se passa tutti i check pusho i numeri inseriti dall' utente in arrayNumeriUtente
             arrayNumeriUtente.push(numeroUtente);
 
-            // cerco nell array del computer se c'è un numero uguale a ad uno dei numeri inseriti dall utente
+            // Cerco nell' arrayNumeriDaRicordare se c'è un numero uguale a ad uno dei numeri inseriti dall' utente
             for (var i = 0; i < numeriDaRicordare.length; i++) {
 
                 if (numeriDaRicordare[i] === (numeroUtente)) {
+                    // Se c'è lo pusho nell' array numeriEsatti 
                     numeriEsatti.push(numeroUtente)
                 }
             }
@@ -84,7 +92,7 @@ setTimeout(function () {
         default:
             document.querySelector("h5").innerHTML = ("Hai totalizzato " + numeriEsatti.length + " punti. Bel lavoro 😃");
     }
-    
+
 }, 1000);
 
 
