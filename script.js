@@ -18,7 +18,30 @@ while (numeriDaRicordare.length !== 5) {
     }
 }
 
-console.log(numeriDaRicordare);
+console.log("Questi sono i numeri scelti dal computer che l'utente deve ricordare: " + numeriDaRicordare);
+
+// Creo il timer dei 30 secondi - parte da 30 e arriva a 0 - a 0 si ferma
+var time = 30
+// il timer che parte da 30
+var timer = setInterval(function(){
+
+    console.log(time--)
+
+    if(time == 0) {
+        clearInterval(timer)
+    }
+
+} , 1000)
+
+
+// Quando si ferma il timer dei 30 secondi parte questa parte di codice
+setTimeout(function(){
+
+    alert("hello world")
+
+}, 30000);
+
+
 
 
 
