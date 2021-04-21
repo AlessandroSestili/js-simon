@@ -1,5 +1,5 @@
-// Funzione che genera numeri casuali da 1 a 100
-function generaNumRandom (){
+// Funzione che genera numeri casuali da 1 a max
+function generaNumRandom (max){
 
-    return (Math.round (Math.random() * 100) )
+    return (Math.round (Math.random() * max) )
 }

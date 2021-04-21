@@ -9,7 +9,7 @@ document.querySelector("h5").innerHTML = ("Allo scadere di questo timer scrivi i
 // Faccio ripetere il ciclo finchè l'Array non contiene 5 elementi
 for (var i = 0; numeriDaRicordare.length !== 5; i++) {
     
-    var numeroRandom = generaNumRandom();
+    var numeroRandom = generaNumRandom(100);
     
     if (numeriDaRicordare.includes(numeroRandom) == false) {
         alert(i + 1 + "º numero: " + numeroRandom);
